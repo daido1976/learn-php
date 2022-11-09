@@ -14,5 +14,5 @@ $ php fizzbuzz/index.php
 - https://getcomposer.org/doc/
 
 ```
-$ composer exec phpunit .
+$ composer run-script test
 ```
