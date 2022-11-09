@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 function fizzBuzz(int $i): string
 {
-  return match (0) {
-    $i % 15 => "FizzBuzz",
-    $i % 3  => "Fizz",
-    $i % 5  => "Buzz",
-    default => (string)$i,
-  };
+  if ($i % 15 === 0) {
+    return 'FizzBuzz';
+  } else if ($i % 3 === 0) {
+    return 'Fizz';
+  } else if ($i % 5 === 0) {
+    return 'Buzz';
+  }
+
+  return (string)$i;
 }
