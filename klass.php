@@ -13,3 +13,6 @@ class C
     echo "puts {$this->var}", PHP_EOL;
   }
 }
+
+$c = new C(100);
+$c->puts();

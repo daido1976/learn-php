@@ -13,11 +13,6 @@ function fizzBuzz(int $i): string
   }
 }
 
-// foreach (range(1, 100) as $i) {
-//   echo fizzBuzz($i), PHP_EOL;
-// }
-
-use C;
-
-$c = new C(100);
-$c->puts();
+foreach (range(1, 100) as $i) {
+  echo fizzBuzz($i), PHP_EOL;
+}
