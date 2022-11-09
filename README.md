@@ -7,3 +7,12 @@
 ```
 $ php fizzbuzz/index.php
 ```
+
+## Testing
+
+- https://phpunit.readthedocs.io/ja/latest/
+- https://getcomposer.org/doc/
+
+```
+$ composer exec phpunit .
+```

@@ -1,17 +1,7 @@
 <?php
 
 declare(strict_types=1);
-
-function fizzBuzz(int $i): string
-{
-  if (($i % 3 !== 0) && ($i % 5 !== 0)) {
-    return (string)$i;
-  } else if ($i % 3 === 0) {
-    return "Fizz";
-  } else if ($i % 5 === 0) {
-    return 'Buzz';
-  }
-}
+require_once(dirname(__FILE__) . "/fizzbuzz.php");
 
 foreach (range(1, 100) as $i) {
   echo fizzBuzz($i), PHP_EOL;
