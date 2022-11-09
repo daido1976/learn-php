@@ -1,0 +1,6 @@
+{
+  "name": "daido1976/learn-php",
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  }
+}
