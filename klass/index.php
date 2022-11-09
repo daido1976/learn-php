@@ -1,17 +1,18 @@
 <?php
+
 class C
 {
-  private $var;
+    private $var;
 
-  public function __construct(int $var = 1)
-  {
-    $this->var = $var;
-  }
+    public function __construct(int $var = 1)
+    {
+        $this->var = $var;
+    }
 
-  public function puts()
-  {
-    echo "puts {$this->var}", PHP_EOL;
-  }
+    public function puts()
+    {
+        echo "puts {$this->var}", PHP_EOL;
+    }
 }
 
 $c = new C(100);
