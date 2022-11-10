@@ -2,11 +2,11 @@
 
 declare (strict_types = 1);
 
-require_once dirname(__FILE__) . "/fizzbuzz.php";
+require_once dirname(__FILE__) . "/Fizzbuzz.php";
 
 use PHPUnit\Framework\TestCase;
 
-final class Test extends TestCase
+final class FizzbuzzTest extends TestCase
 {
     public function testFizzBuzz(): void
     {
