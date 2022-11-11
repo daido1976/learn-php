@@ -17,6 +17,8 @@ class App
     {
         $path = $this->request->getPath($this->request->rawPath());
         $method = $this->request->getMethod($this->request->rawMethod());
-        $this->router->resolve($path, $method);
+        $json = file_get_contents('php://input');
+        $params = json_decode($json, true);
+        $this->router->resolve($path, $method, $params);
     }
 }

@@ -1,18 +1,25 @@
 <?php
 
 declare (strict_types = 1);
-require_once dirname(__FILE__) . "/App.php";
-require_once dirname(__FILE__) . "/Request.php";
-require_once dirname(__FILE__) . "/Router.php";
+require_once dirname(__FILE__) . "/wf/App.php";
+require_once dirname(__FILE__) . "/wf/Request.php";
+require_once dirname(__FILE__) . "/wf/Router.php";
+require_once dirname(__FILE__) . "/Todo.php";
 
 $app = new App();
 
 $app->router->get('/', function () {
-    return 'Hello, world';
+    return 'Hello, todo web server!';
 });
 
-$app->router->get('/contact', function () {
-    return 'Contact';
+$app->router->get('/todos', function () {
+    $todos = (new Todo)->all();
+    return json_encode($todos);
+});
+
+$app->router->post('/todos', function (array $params) {
+    $todo = (new Todo)->add($params);
+    return json_encode($todo);
 });
 
 $app->run();
