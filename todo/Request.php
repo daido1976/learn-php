@@ -4,11 +4,9 @@ declare (strict_types = 1);
 
 class Request
 {
-    public Router $router;
-
-    public function getPath(): string
+    public function getPath(?string $rawPath): string
     {
-        $path = $_SERVER['REQUEST_URI'] ?? '/';
+        $path = $rawPath ?? '/';
         $position = strpos($path, '?');
         if ($position === false) {
             return $path;
@@ -16,9 +14,19 @@ class Request
         return substr($path, 0, $position);
     }
 
-    public function getMethod(): string
+    public function getMethod(?string $rawMethod): string
     {
-        $m = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+        $m = $rawMethod ?? 'GET';
         return strtolower($m);
+    }
+
+    public function rawPath(): ?string
+    {
+        return $_SERVER['REQUEST_URI'];
+    }
+
+    public function rawMethod(): ?string
+    {
+        return $_SERVER['REQUEST_METHOD'];
     }
 }

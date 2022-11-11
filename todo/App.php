@@ -10,11 +10,13 @@ class App
     public function __construct()
     {
         $this->request = new Request();
-        $this->router = new Router($this->request);
+        $this->router = new Router();
     }
 
     public function run()
     {
-        $this->router->resolve();
+        $path = $this->request->getPath($this->request->rawPath());
+        $method = $this->request->getMethod($this->request->rawMethod());
+        $this->router->resolve($path, $method);
     }
 }
