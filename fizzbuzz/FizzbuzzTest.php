@@ -2,7 +2,7 @@
 
 declare (strict_types = 1);
 
-require_once dirname(__FILE__) . "/Fizzbuzz.php";
+require_once __DIR__ . "/Fizzbuzz.php";
 
 use PHPUnit\Framework\TestCase;
 

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types = 1);
-require_once dirname(__FILE__) . "/wf/App.php";
-require_once dirname(__FILE__) . "/wf/Request.php";
-require_once dirname(__FILE__) . "/wf/Router.php";
-require_once dirname(__FILE__) . "/Todo.php";
+require_once __DIR__ . "/wf/App.php";
+require_once __DIR__ . "/wf/Request.php";
+require_once __DIR__ . "/wf/Router.php";
+require_once __DIR__ . "/Todo.php";
 
 $app = new App();
 
