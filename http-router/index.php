@@ -1,6 +1,7 @@
 <?php
-
 declare (strict_types = 1);
+
+// Usage:
 require_once __DIR__ . "/App.php";
 require_once __DIR__ . "/Request.php";
 require_once __DIR__ . "/Router.php";
