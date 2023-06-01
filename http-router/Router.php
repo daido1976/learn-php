@@ -32,7 +32,7 @@ class Router
         $this->routes['delete'][$path] = $callback;
     }
 
-    public function resolve(string $path, string $method,  ? array $params)
+    public function resolve(string $path, string $method,  ? array $bodyParams,  ? array $queryParams)
     {
         $callback = $this->routes[$method][$path] ?? false;
         if ($callback === false) {
@@ -40,6 +40,6 @@ class Router
             echo "Not found";
             exit;
         }
-        echo call_user_func($callback, $params);
+        echo call_user_func($callback, $bodyParams, $queryParams);
     }
 }

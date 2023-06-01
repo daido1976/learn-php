@@ -20,6 +20,16 @@ class Request
         return strtolower($m);
     }
 
+    public function getQueryParams(): array
+    {
+        $queryString = parse_url($this->rawPath(), PHP_URL_QUERY);
+        $queryParams = [];
+        if ($queryString !== null) {
+            parse_str($queryString, $queryParams);
+        }
+        return $queryParams;
+    }
+
     private function rawPath():  ? string
     {
         return $_SERVER['REQUEST_URI'];

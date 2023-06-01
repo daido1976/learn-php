@@ -19,7 +19,8 @@ class App
         $path = $this->request->getPath();
         $method = $this->request->getMethod();
         $json = file_get_contents('php://input');
-        $params = json_decode($json, true);
-        $this->router->resolve($path, $method, $params);
+        $bodyParams = json_decode($json, true);
+        $queryParams = $this->request->getQueryParams();
+        $this->router->resolve($path, $method, $bodyParams, $queryParams);
     }
 }
