@@ -2,7 +2,6 @@
 
 declare (strict_types = 1);
 
-// TODO: Support query and path params
 class App
 {
     public Router $router;
