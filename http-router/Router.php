@@ -32,14 +32,36 @@ class Router
         $this->routes['delete'][$path] = $callback;
     }
 
-    public function resolve(string $path, string $method,  ? array $bodyParams,  ? array $queryParams)
+    public function parsePathParams(string $routePath, string $requestPath): array
     {
-        $callback = $this->routes[$method][$path] ?? false;
-        if ($callback === false) {
-            http_response_code(404);
-            echo "Not found";
-            exit;
+        $routeParts = explode('/', trim($routePath, '/'));
+        $requestParts = explode('/', trim($requestPath, '/'));
+
+        $params = [];
+
+        foreach ($routeParts as $index => $routePart) {
+            if (strpos($routePart, '{') !== false && isset($requestParts[$index])) {
+                $paramName = trim($routePart, '{}');
+                $params[$paramName] = $requestParts[$index];
+            }
         }
-        echo call_user_func($callback, $bodyParams, $queryParams);
+
+        return $params;
+    }
+
+    public function resolve(string $requestPath, string $method,  ? array $bodyParams,  ? array $queryParams)
+    {
+        foreach ($this->routes[$method] as $routePath => $callback) {
+            $pathParams = $this->parsePathParams($routePath, $requestPath);
+            if (!empty($pathParams) || $routePath === $requestPath) {
+                echo call_user_func($callback, $bodyParams, $queryParams, $pathParams);
+                return;
+            }
+        }
+
+        // If no route matched
+        http_response_code(404);
+        echo "Not found";
+        exit;
     }
 }

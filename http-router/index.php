@@ -11,19 +11,35 @@ $app->router->get('/', function () {
     return 'Hello, simple http router!';
 });
 
-$app->router->get('/params', function ( ? array $_, array $queryParams) {
+$app->router->get('/params/{id}', function ( ? array $_,  ? array $queryParams,  ? array $pathParams) {
     return json_encode([
         'queryParams' => $queryParams,
+        'pathParams' => $pathParams,
     ]);
 });
 
-$app->router->post('/params', function (array $bodyParams, array $queryParams) {
+$app->router->post('/params/{id}', function ( ? array $bodyParams,  ? array $queryParams,  ? array $pathParams) {
     return json_encode([
         'bodyParams' => $bodyParams,
         'queryParams' => $queryParams,
+        'pathParams' => $pathParams,
     ]);
 });
 
-// TODO: implement other methods(put, delete)
+$app->router->patch('/params/{id}', function ( ? array $bodyParams,  ? array $queryParams,  ? array $pathParams) {
+    return json_encode([
+        'bodyParams' => $bodyParams,
+        'queryParams' => $queryParams,
+        'pathParams' => $pathParams,
+    ]);
+});
+
+$app->router->delete('/params/{id}', function ( ? array $bodyParams,  ? array $queryParams,  ? array $pathParams) {
+    return json_encode([
+        'bodyParams' => $bodyParams,
+        'queryParams' => $queryParams,
+        'pathParams' => $pathParams,
+    ]);
+});
 
 $app->run();
