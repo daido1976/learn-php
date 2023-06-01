@@ -17,7 +17,22 @@ class Router
         $this->routes['post'][$path] = $callback;
     }
 
-    public function resolve(string $path, string $method, ?array $params)
+    public function put(string $path, callable $callback)
+    {
+        $this->routes['put'][$path] = $callback;
+    }
+
+    public function patch(string $path, callable $callback)
+    {
+        $this->routes['patch'][$path] = $callback;
+    }
+
+    public function delete(string $path, callable $callback)
+    {
+        $this->routes['delete'][$path] = $callback;
+    }
+
+    public function resolve(string $path, string $method,  ? array $params)
     {
         $callback = $this->routes[$method][$path] ?? false;
         if ($callback === false) {

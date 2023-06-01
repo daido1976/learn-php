@@ -2,6 +2,7 @@
 
 declare (strict_types = 1);
 
+// TODO: Support query and path params
 class App
 {
     public Router $router;
@@ -15,8 +16,8 @@ class App
 
     public function run()
     {
-        $path = $this->request->getPath($this->request->rawPath());
-        $method = $this->request->getMethod($this->request->rawMethod());
+        $path = $this->request->getPath();
+        $method = $this->request->getMethod();
         $json = file_get_contents('php://input');
         $params = json_decode($json, true);
         $this->router->resolve($path, $method, $params);

@@ -22,4 +22,6 @@ $app->router->post('/todos', function (array $params) {
     return json_encode($todo);
 });
 
+// TODO: implement other methods(put, delete)
+
 $app->run();

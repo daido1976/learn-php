@@ -4,9 +4,9 @@ declare (strict_types = 1);
 
 class Request
 {
-    public function getPath(?string $rawPath): string
+    public function getPath(): string
     {
-        $path = $rawPath ?? '/';
+        $path = $this->rawPath() ?? '/';
         $position = strpos($path, '?');
         if ($position === false) {
             return $path;
@@ -14,18 +14,18 @@ class Request
         return substr($path, 0, $position);
     }
 
-    public function getMethod(?string $rawMethod): string
+    public function getMethod(): string
     {
-        $m = $rawMethod ?? 'GET';
+        $m = $this->rawMethod() ?? 'GET';
         return strtolower($m);
     }
 
-    public function rawPath(): ?string
+    private function rawPath():  ? string
     {
         return $_SERVER['REQUEST_URI'];
     }
 
-    public function rawMethod(): ?string
+    private function rawMethod() :  ? string
     {
         return $_SERVER['REQUEST_METHOD'];
     }
