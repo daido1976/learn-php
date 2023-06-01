@@ -14,10 +14,10 @@ class Request
         return substr($path, 0, $position);
     }
 
-    public function getMethod(): string
+    public function getMethod(): HttpMethod
     {
-        $m = $this->rawMethod() ?? 'GET';
-        return strtolower($m);
+        $method = HttpMethod::tryFrom(strtolower($this->rawMethod()));
+        return $method ?? HttpMethod::GET;
     }
 
     public function getQueryParams(): array

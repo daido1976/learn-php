@@ -4,6 +4,7 @@ declare (strict_types = 1);
 require_once __DIR__ . "/App.php";
 require_once __DIR__ . "/Request.php";
 require_once __DIR__ . "/Router.php";
+require_once __DIR__ . "/Method.php";
 
 $app = new App();
 

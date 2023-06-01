@@ -9,27 +9,27 @@ class Router
 
     public function get(string $path, callable $callback)
     {
-        $this->routes['get'][$path] = $callback;
+        $this->routes[HttpMethod::GET->value][$path] = $callback;
     }
 
     public function post(string $path, callable $callback)
     {
-        $this->routes['post'][$path] = $callback;
+        $this->routes[HttpMethod::POST->value][$path] = $callback;
     }
 
     public function put(string $path, callable $callback)
     {
-        $this->routes['put'][$path] = $callback;
+        $this->routes[HttpMethod::PUT->value][$path] = $callback;
     }
 
     public function patch(string $path, callable $callback)
     {
-        $this->routes['patch'][$path] = $callback;
+        $this->routes[HttpMethod::PATCH->value][$path] = $callback;
     }
 
     public function delete(string $path, callable $callback)
     {
-        $this->routes['delete'][$path] = $callback;
+        $this->routes[HttpMethod::DELETE->value][$path] = $callback;
     }
 
     public function parsePathParams(string $routePath, string $requestPath): array
@@ -49,9 +49,9 @@ class Router
         return $params;
     }
 
-    public function resolve(string $requestPath, string $method,  ? array $bodyParams,  ? array $queryParams)
+    public function resolve(string $requestPath, HttpMethod $method,  ? array $bodyParams,  ? array $queryParams)
     {
-        foreach ($this->routes[$method] as $routePath => $callback) {
+        foreach ($this->routes[$method->value] as $routePath => $callback) {
             $pathParams = $this->parsePathParams($routePath, $requestPath);
             if (!empty($pathParams) || $routePath === $requestPath) {
                 echo call_user_func($callback, $bodyParams, $queryParams, $pathParams);
