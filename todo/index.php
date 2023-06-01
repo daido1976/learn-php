@@ -9,16 +9,16 @@ require_once __DIR__ . "/Todo.php";
 
 $app = new App();
 
-$app->router->get('/', function () {
+$app->get('/', function () {
     return 'Hello, todo web server!';
 });
 
-$app->router->get('/todos', function () {
+$app->get('/todos', function () {
     $todos = (new Todo)->all();
     return json_encode($todos);
 });
 
-$app->router->post('/todos', function (array $bodyParams) {
+$app->post('/todos', function (array $bodyParams) {
     $todo = (new Todo)->add($bodyParams);
     return json_encode($todo);
 });

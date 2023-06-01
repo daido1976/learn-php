@@ -13,6 +13,31 @@ class App
         $this->router = new Router();
     }
 
+    public function get(string $path, callable $callback)
+    {
+        $this->router->register(HttpMethod::GET, $path, $callback);
+    }
+
+    public function post(string $path, callable $callback)
+    {
+        $this->router->register(HttpMethod::POST, $path, $callback);
+    }
+
+    public function put(string $path, callable $callback)
+    {
+        $this->router->register(HttpMethod::PUT, $path, $callback);
+    }
+
+    public function patch(string $path, callable $callback)
+    {
+        $this->router->register(HttpMethod::PATCH, $path, $callback);
+    }
+
+    public function delete(string $path, callable $callback)
+    {
+        $this->router->register(HttpMethod::DELETE, $path, $callback);
+    }
+
     public function run()
     {
         $path = $this->request->getPath();

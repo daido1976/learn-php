@@ -7,29 +7,9 @@ class Router
     /** @var array<string, ?array<string, ?callable>> */
     private array $routes = [];
 
-    public function get(string $path, callable $callback)
+    public function register(HttpMethod $method, string $path, callable $callback)
     {
-        $this->routes[HttpMethod::GET->value][$path] = $callback;
-    }
-
-    public function post(string $path, callable $callback)
-    {
-        $this->routes[HttpMethod::POST->value][$path] = $callback;
-    }
-
-    public function put(string $path, callable $callback)
-    {
-        $this->routes[HttpMethod::PUT->value][$path] = $callback;
-    }
-
-    public function patch(string $path, callable $callback)
-    {
-        $this->routes[HttpMethod::PATCH->value][$path] = $callback;
-    }
-
-    public function delete(string $path, callable $callback)
-    {
-        $this->routes[HttpMethod::DELETE->value][$path] = $callback;
+        $this->routes[$method->value][$path] = $callback;
     }
 
     public function parsePathParams(string $routePath, string $requestPath): array
