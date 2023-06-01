@@ -4,6 +4,7 @@ declare (strict_types = 1);
 require_once __DIR__ . "/../http-router/App.php";
 require_once __DIR__ . "/../http-router/Request.php";
 require_once __DIR__ . "/../http-router/Router.php";
+require_once __DIR__ . "/../http-router/Method.php";
 require_once __DIR__ . "/Todo.php";
 
 $app = new App();
@@ -17,8 +18,8 @@ $app->router->get('/todos', function () {
     return json_encode($todos);
 });
 
-$app->router->post('/todos', function (array $params) {
-    $todo = (new Todo)->add($params);
+$app->router->post('/todos', function (array $bodyParams) {
+    $todo = (new Todo)->add($bodyParams);
     return json_encode($todo);
 });
 

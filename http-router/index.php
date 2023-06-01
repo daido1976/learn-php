@@ -13,22 +13,14 @@ $app->router->get('/', function () {
     return 'Hello, simple http router!';
 });
 
-$app->router->get('/params/{id}', function ( ? array $_,  ? array $queryParams,  ? array $pathParams) {
+$app->router->get('/params/{id}', function (array $_, array $queryParams, array $pathParams) {
     return json_encode([
         'queryParams' => $queryParams,
         'pathParams' => $pathParams,
     ]);
 });
 
-$app->router->post('/params/{id}', function ( ? array $bodyParams,  ? array $queryParams,  ? array $pathParams) {
-    return json_encode([
-        'bodyParams' => $bodyParams,
-        'queryParams' => $queryParams,
-        'pathParams' => $pathParams,
-    ]);
-});
-
-$app->router->patch('/params/{id}', function ( ? array $bodyParams,  ? array $queryParams,  ? array $pathParams) {
+$app->router->post('/params/{id}', function (array $bodyParams, array $queryParams, array $pathParams) {
     return json_encode([
         'bodyParams' => $bodyParams,
         'queryParams' => $queryParams,
@@ -36,7 +28,15 @@ $app->router->patch('/params/{id}', function ( ? array $bodyParams,  ? array $qu
     ]);
 });
 
-$app->router->delete('/params/{id}', function ( ? array $bodyParams,  ? array $queryParams,  ? array $pathParams) {
+$app->router->patch('/params/{id}', function (array $bodyParams, array $queryParams, array $pathParams) {
+    return json_encode([
+        'bodyParams' => $bodyParams,
+        'queryParams' => $queryParams,
+        'pathParams' => $pathParams,
+    ]);
+});
+
+$app->router->delete('/params/{id}', function (array $bodyParams, array $queryParams, array $pathParams) {
     return json_encode([
         'bodyParams' => $bodyParams,
         'queryParams' => $queryParams,
