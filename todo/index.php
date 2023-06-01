@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types = 1);
-require_once __DIR__ . "/wf/App.php";
-require_once __DIR__ . "/wf/Request.php";
-require_once __DIR__ . "/wf/Router.php";
+require_once __DIR__ . "/lib/App.php";
+require_once __DIR__ . "/lib/Request.php";
+require_once __DIR__ . "/lib/Router.php";
 require_once __DIR__ . "/Todo.php";
 
 $app = new App();
